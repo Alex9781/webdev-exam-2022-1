@@ -39,7 +39,7 @@
     </nav>
 
     <main>
-        <section class="carousel countainer py-3 px-5">
+        <section class="carousel container py-3">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -85,8 +85,8 @@
             </div>
         </section>
 
-        <section class="about countainer py-3">
-            <div class="text-center mx-5">
+        <section class="about container py-3">
+            <div class="text-center">
                 <h2>Служба доставки еды</h2>
                 <div class="heading-line mx-auto"></div>
                 <div class="row">
@@ -119,8 +119,8 @@
             </div>
         </section>
 
-        <section class="restaurant countainer py-3">
-            <div class="text-center mx-5">
+        <section class="restaurant container py-3">
+            <div class="text-center">
                 <h2>Выбор предприятия общественного питания</h2>
                 <form class="row border border-dark">
                     <div class="mb-3 col-md-6">
@@ -145,19 +145,313 @@
                         <label for="discount" class="form-label">Соц. скидки</label>
                         <select name="discount" id="discount" class="form-control">
                             <option>Не выбрано</option>
+                            <option>Да</option>
+                            <option>Нет</option>
                         </select>
                     </div>
                     <div class="mb-3 col-md-4 align-self-end text-end">
                         <button type="button" class="btn btn-primary">Найти</button>
                     </div>
                 </form>
-
             </div>
+            <div class="restaurant-list pt-3">
+                <table class="table table-bordered border-dark">
+                    <thead>
+                        <th scope="col">Название</th>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Адрес</th>
+                        <th scope="col">Действия</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="pagination d-flex justify-content-center">
+                    <button class="first-page-btn btn" data-page="1">Первая страница</button>
+                    <div class="pages-btns">
+                        <button class="active btn" data-page="1">1</button>
+                        <button class="btn" data-page="2">2</button>
+                        <button class="btn" data-page="3">3</button>
+                    </div>
+                    <button class="last-page-btn btn" data-page="20">Последняя страница</button>
+                </div>
+            </div>
+            <div class="heading-line mx-auto"></div>
         </section>
 
+        <section class="menu container py-3">
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count1">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count2">
+                        <button>+</button>
+                    </div>
+                </div>
+                <div class="dish d-flex flex-column align-items-center border border-dark mx-1">
+                    <img src="" alt="">
+                    <h2>Название</h2>
+                    <p>Краткое описание</p>
+                    <h3>100&#8381;</h3>
+                    <div class="dish-count">
+                        <button>-</button>
+                        <input type="number" name="count" id="count3">
+                        <button>+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="heading-line mx-auto"></div>
+        </section>
+
+        <section class="order container py-3">
+            <h2>Дополнительные опции</h2>
+            <form class="d-flex flex-column">
+                <div class="my-2 mx-4">
+                    <label for="student">В два раза больше</label>
+                    <input type="checkbox" name="student" id="student">
+                </div>
+                <div class="my-2 mx-4">
+                    <label for="quick">Только горячим</label>
+                    <input type="checkbox" name="quick" id="quick">
+                </div>
+            </form>
+            <div class="sum d-flex justify-content-between border border-dark p-2 mb-3">
+                <h2>Итого: </h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-order"
+                    id="place-order">Оформить заказ</button>
+            </div>
+            <div class="heading-line mx-auto"></div>
+        </section>
+
+        <footer class="container py-3">
+            <p class="text-center fw-bold">ООО Служба доставки еды</p>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <img src="" alt="">
+                    <p>email.email@email.email</p>
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <p>food.ru</p>
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </footer>
     </main>
 
+    <div class="modal" tabindex="-1" id="confirm-order">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Оформление заказа</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h5>Позиции заказа</h5>
 
+                    </div>
+                    <div>
+                        <h5>Дополнительные опции</h5>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p>Студент ВУЗа:</p>
+                                <p>Быстрая доставка:</p>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Информация о предприятии</h5>
+                        <div class="row">
+                            <div class="col">
+                                <p>Название</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Административный округ</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Район</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Адрес</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Рейтинг</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Доставка</h5>
+                        <div class="row">
+                            <div class="col">
+                                <p>Зона доставки:</p>
+                            </div>
+                            <div class="col">
+                                <select class="form-select" name="" id="">
+                                    <option value="">Первая зона</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Адрес доставки:</p>
+                            </div>
+                            <div class="col">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Стоимость доставки:</p>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>ФИО получателя:</p>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Итого: </h5>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

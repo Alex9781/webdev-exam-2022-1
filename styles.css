@@ -8,3 +8,8 @@
     width: 85%;
     background-color: black;
 }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
