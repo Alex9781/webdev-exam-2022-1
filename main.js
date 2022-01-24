@@ -159,11 +159,12 @@ function renderSets() {
     xhr.open("GET", "http://sets.std-1558.ist.mospolytech.ru/sets.json");
     xhr.responseType = "json";
     xhr.onload = function () {
-        let data = this.response
+        let data = this.response;
+	console.log(data);
         for (let i = 0; i < data.length; i++) {
-            dishes[i].querySelector("img").src = data[i]["path-to-img"];
-            dishes[i].querySelector("h2").src = data[i]["name"];
-            dishes[i].querySelector("p").src = data[i]["description"];
+            //dishes[i].querySelector("img").src = data[i]["path-to-img"];
+            dishes[i].querySelector("h2").innerHTML = data[i]["name"];
+            dishes[i].querySelector("p").innerHTML = data[i]["description"];
         }
     }
     xhr.send();
