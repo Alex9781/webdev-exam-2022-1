@@ -160,11 +160,12 @@ function renderSets() {
     xhr.responseType = "json";
     xhr.onload = function () {
         let data = this.response;
-	console.log(data);
+	    console.log(data);
         for (let i = 0; i < data.length; i++) {
-            //dishes[i].querySelector("img").src = data[i]["path-to-img"];
+            dishes[i].querySelector("img").src = data[i]["path-to-img"];
             dishes[i].querySelector("h2").innerHTML = data[i]["name"];
             dishes[i].querySelector("p").innerHTML = data[i]["description"];
+            dishes[i].querySelector("h3").innerHTML = filteredBase[0]["set_" + i.toString()];
         }
     }
     xhr.send();
