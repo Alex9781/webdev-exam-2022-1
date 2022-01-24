@@ -1,0 +1,53 @@
+[
+    {
+        "name" : "Борщ",
+        "description" : "С капусткой но не красный",
+        "path-to-img" : "./img/1.jpg"
+    },
+    {
+        "name" : "Котлетки",
+        "description" : "С макарошками? Нет, с пюрешкой",
+        "path-to-img" : "./img/2.jpg"
+    },
+    {
+        "name" : "Мясо",
+        "description" : "Запей пивом",
+        "path-to-img" : "./img/3.jpg"
+    },
+    {
+        "name" : "Пельмени",
+        "description" : "Много мяса, мало теста",
+        "path-to-img" : "./img/4.jpg"
+    },
+    {
+        "name" : "Макарошки",
+        "description" : "НЕТ, бери пюрешку!!",
+        "path-to-img" : "./img/5.jpg"
+    },
+    {
+        "name" : "Блины",
+        "description" : "С мясом",
+        "path-to-img" : "./img/6.jpg"
+    },
+    {
+        "name" : "Пирожки",
+        "description" : "С капустой",
+        "path-to-img" : "./img/7.jpg"
+    },
+    {
+        "name" : "Греча",
+        "description" : "Из десятитонного бункера бабки с соседнего подъезда",
+        "path-to-img" : "./img/8.jpg"
+    },
+    {
+        "name" : "Шаурма",
+        "description" : "Точно не кошка",
+        "path-to-img" : "./img/9.jpg"
+    },
+    {
+        "name" : "Оливье",
+        "description" : "С новогоднего стола",
+        "path-to-img" : "./img/10.jpg"
+    }
+
+]
