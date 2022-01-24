@@ -156,10 +156,10 @@ function renderSets() {
     let dishes = document.querySelectorAll(".dish");
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "161.97.92.112");
+    xhr.open("GET", "http://sets.std-1558.ist.mospolytech.ru/sets.json");
     xhr.responseType = "json";
     xhr.onload = function () {
-        
+        let data = this.response
         for (let i = 0; i < data.length; i++) {
             dishes[i].querySelector("img").src = data[i]["path-to-img"];
             dishes[i].querySelector("h2").src = data[i]["name"];
