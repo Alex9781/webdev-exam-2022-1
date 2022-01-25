@@ -72,9 +72,10 @@ function renderRestaurants(restaurants, page) {
         field3.innerHTML = restaurants[i].address;
 
         let field4 = restaurant.appendChild(document.createElement("td"))
-        let button = document.createElement("button")
+        let button = document.createElement("a")
         button.classList = "btn btn-primary"
         button.innerHTML = "Выбрать"
+        button.href = "#menu"
         field4.appendChild(button);
 
         table.appendChild(restaurant);
@@ -153,27 +154,144 @@ function updatePagination() {
 }
 
 function renderSets() {
-    let dishes = document.querySelectorAll(".dish");
+    let dish = document.querySelector("#card");
+    let dishParent = dish.closest(".row");
+
+    for (let i = 0; i < 9; i++) {
+        let newDish = document.createElement("div");
+        newDish.className = "col";
+        newDish.innerHTML = dish.innerHTML;
+        dishParent.appendChild(newDish);
+    }
+
+    let dishes = document.querySelectorAll(".card");
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://sets.std-1558.ist.mospolytech.ru/sets.json");
+    xhr.open("GET", "http://161.97.92.112:30003/api/sets");
     xhr.responseType = "json";
     xhr.onload = function () {
         let data = this.response;
-	    console.log(data);
         for (let i = 0; i < data.length; i++) {
             dishes[i].querySelector("img").src = data[i]["path-to-img"];
-            dishes[i].querySelector("h2").innerHTML = data[i]["name"];
+            dishes[i].querySelector("h5").innerHTML = data[i]["name"];
             dishes[i].querySelector("p").innerHTML = data[i]["description"];
-            dishes[i].querySelector("h3").innerHTML = filteredBase[0]["set_" + i.toString()];
+            dishes[i].querySelector("h6").innerHTML = filteredBase[0]["set_" + (i + 1).toString()] + "&#8381;";
         }
+        setsBase = data;
     }
     xhr.send();
 
 }
 
+function selectBtnHandler(event) {
+    let restaurantId = event.target.closest("tr").id;
+    currentRestaurant = restaurantId;
+    let dishes = document.querySelectorAll(".card");
+
+    for (let i = 0; i < 10; i++) {
+        dishes[i].querySelector("h6").innerHTML = filteredBase[restaurantId]["set_" + (i + 1).toString()] + "&#8381;";
+    }
+}
+
+function changeDishCountHandler(event) {
+    let field = event.target.parentElement.querySelector("input");
+    if (event.target.innerHTML == "+") field.value = field.value - (-1);
+    else if (field.value > 0) field.value = field.value - 1;
+    calculateOrderPrice();
+}
+
+function modalPageBtnHandler(event) {
+    let sets = document.querySelectorAll(".card");
+    let count = [];
+    let options = [];
+
+    for (let set of sets) {
+        count.push(set.querySelector("input").value);
+    }
+    options[0] = document.querySelector("#twice").checked;
+    options[1] = document.querySelector("#warm").checked;
+
+    if (count.every((val) => val == 0)) {
+        alert("Корзина пуста", "warning");
+    }
+    else {
+        let fix = document.querySelector("#modal-fix");
+        fix.click();
+        renderModal(count, options);
+    }
+}
+
+function renderModal(count, options) {
+    let setsList = document.querySelector(".list-group");
+    let pattern = document.querySelector(".list-group-item.d-flex.justify-content-between").innerHTML;
+    setsList.innerHTML = "";
+
+    for (let i = 0; i < count.length; i++) {
+        if (count[i] != 0) {
+            let set = document.createElement("li");
+            set.classList = "list-group-item d-flex justify-content-between";
+            set.innerHTML = pattern;
+
+            set.querySelector("img").src = `./img/${i+1}.jpg`;
+            set.querySelectorAll("h6")[0].innerHTML = setsBase[i].name;
+            set.querySelector("p").innerHTML = count[i].toString() + "x" + filteredBase[currentRestaurant]["set_" + (i + 1).toString()] + "&#8381;";
+            set.querySelectorAll("h6")[1].innerHTML = count[i] * filteredBase[currentRestaurant]["set_" + (i + 1).toString()] + "&#8381;";
+
+            setsList.append(set);
+        }
+    }
+
+    let optionsContainer = document.querySelector("#options-container");
+
+    let firsOption = document.createElement("p");
+    firsOption.innerHTML = options[0] ? "+60%" : "Нет";
+    optionsContainer.appendChild(firsOption);
+
+    let secondOption = document.createElement("p");
+    secondOption.innerHTML = options[1] ? "-30% (Если заказ будет холодным)" : "Нет";
+    optionsContainer.appendChild(secondOption);
+
+    document.querySelector("#modal-name").innerHTML = filteredBase[currentRestaurant].name;
+    document.querySelector("#modal-AU").innerHTML = filteredBase[currentRestaurant].admArea;
+    document.querySelector("#modal-district").innerHTML = filteredBase[currentRestaurant].district;
+    document.querySelector("#modal-address").innerHTML = filteredBase[currentRestaurant].address;
+    document.querySelector("#modal-rating").innerHTML = filteredBase[currentRestaurant].rate;
+}
+
+function alert(message, type) {
+    let alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+    let wrapper = document.createElement('div')
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+    alertPlaceholder.append(wrapper)
+}
+
+function modalConfirmOrder(event) {
+    alert("Заказ подтверждён", "success")
+}
+
+function calculateOrderPrice() {
+    orderPrice = 0;
+    let sets = document.querySelectorAll(".card");
+    let count = [];
+
+    for (let set of sets) {
+        count.push(set.querySelector("input").value);
+    }
+
+    for (let i = 0; i < count.length; i++) {
+        orderPrice += count[i] * filteredBase[currentRestaurant]["set_" + (i + 1).toString()];
+    }
+
+    document.querySelector("#sum").innerHTML = "Итого: " + orderPrice + "&#8381;"
+}
+
 let base;
 let filteredBase;
+let setsBase;
+let currentRestaurant = 0;
+let orderPrice;
 
 window.onload = function () {
     let xhr = new XMLHttpRequest();
@@ -188,39 +306,23 @@ window.onload = function () {
         renderRestaurants(base, 1);
         updatePagination();
         renderSets();
+
+        document.querySelectorAll(".dish-count").forEach((set) => {
+            set.onclick = changeDishCountHandler;
+        });
+
+        let inputs = document.querySelectorAll(".form-control.w-25.text-center");
+        inputs.forEach((input) => {
+            input.addEventListener('change', (event) => {
+                if (input.value < 0) input.value = 0;
+            });
+        });
     };
     xhr.send();
 
     document.querySelector(".pagination").onclick = pageBtnHandler;
     document.querySelector("#filter").onclick = filterBtnHandler;
+    document.querySelector("tbody").onclick = selectBtnHandler;
+    document.querySelector("#place-order").onclick = modalPageBtnHandler;
+    document.querySelector("#order").onclick = modalConfirmOrder;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var myModal = document.querySelector("#confirm-order")
-// var myInput = document.querySelector("#place-order")
-
-// myModal.addEventListener('shown.bs.modal', function () {
-//     myInput.focus()
-// })

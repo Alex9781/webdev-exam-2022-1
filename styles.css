@@ -1,3 +1,15 @@
+/* Убрать стрелочки из поля для числа */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
 .carousel-item img {
     max-height: 400px;
     object-fit: cover;
@@ -12,4 +24,33 @@
 .row {
     margin-left: 0;
     margin-right: 0;
+}
+
+.card img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.alert {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}
+
+#modal-fix {
+    display: none;
+}
+
+.modal-body img {
+    max-height: 50px;
+    object-fit: cover;
+    margin-right: 5px;
+    max-width: 50px;
 }
