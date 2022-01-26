@@ -124,7 +124,7 @@ function filterBtnHandler(event) {
     let type = form.elements["type"].value;
     let discount = form.elements["discount"].value;
 
-    renderRestaurants(filterBase(AU, district, type, discount), 1);
+    renderRestaurants(filterBase(AU, district, type, discount == "Да" ? true : falseD), 1);
 }
 
 function filterBase(AU, district, type, discount) {
@@ -133,7 +133,7 @@ function filterBase(AU, district, type, discount) {
         if ((AU == base[i].admArea || AU == "Не выбрано") &&
             (district == base[i].district || district == "Не выбрано") &&
             (type == base[i].typeObject || type == "Не выбрано") &&
-            (discount == base[i].typeObject || discount == "Не выбрано")) {
+            (discount == base[i].socialPrivileges || discount == "Не выбрано")) {
 
             filteredBase.push(base[i])
         }
@@ -232,16 +232,24 @@ function renderModal(count, options) {
             set.classList = "list-group-item d-flex justify-content-between";
             set.innerHTML = pattern;
 
-            set.querySelector("img").src = `./img/${i+1}.jpg`;
+            count[i] = options[0] ? count[i] * 2 : count[i];
+
+            set.querySelector("img").src = `./img/${i + 1}.jpg`;
             set.querySelectorAll("h6")[0].innerHTML = setsBase[i].name;
             set.querySelector("p").innerHTML = count[i].toString() + "x" + filteredBase[currentRestaurant]["set_" + (i + 1).toString()] + "&#8381;";
-            set.querySelectorAll("h6")[1].innerHTML = count[i] * filteredBase[currentRestaurant]["set_" + (i + 1).toString()] + "&#8381;";
+            if (options[0]) {
+                set.querySelectorAll("h6")[1].innerHTML = count[i] / 2 * filteredBase[currentRestaurant]["set_" + (i + 1).toString()] * 1.6 + "&#8381;"
+            }
+            else { 
+                set.querySelectorAll("h6")[1].innerHTML = count[i] * filteredBase[currentRestaurant]["set_" + (i + 1).toString()] + "&#8381;"; 
+            }
 
             setsList.append(set);
         }
     }
 
     let optionsContainer = document.querySelector("#options-container");
+    optionsContainer.innerHTML = "";
 
     let firsOption = document.createElement("p");
     firsOption.innerHTML = options[0] ? "+60%" : "Нет";
@@ -274,6 +282,7 @@ function modalConfirmOrder(event) {
 function calculateOrderPrice() {
     orderPrice = 0;
     let sets = document.querySelectorAll(".card");
+    let option = document.querySelector("#twice");
     let count = [];
 
     for (let set of sets) {
@@ -283,6 +292,8 @@ function calculateOrderPrice() {
     for (let i = 0; i < count.length; i++) {
         orderPrice += count[i] * filteredBase[currentRestaurant]["set_" + (i + 1).toString()];
     }
+
+    if (option.checked) orderPrice *= 1.6;
 
     document.querySelector("#sum").innerHTML = "Итого: " + orderPrice + "&#8381;"
 }
@@ -325,4 +336,6 @@ window.onload = function () {
     document.querySelector("tbody").onclick = selectBtnHandler;
     document.querySelector("#place-order").onclick = modalPageBtnHandler;
     document.querySelector("#order").onclick = modalConfirmOrder;
+    document.querySelector("#twice").addEventListener("change", calculateOrderPrice, false);
+
 }

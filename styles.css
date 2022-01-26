@@ -54,3 +54,40 @@ input[type=number] {
     margin-right: 5px;
     max-width: 50px;
 }
+
+.about img {
+    max-height: 100px;
+    object-fit: cover;
+}
+
+footer img {
+    max-height: 50px;
+    object-fit: cover;
+}
+
+.bg-primary {
+    background-color: #C51D34!important;
+}
+
+.btn-primary {
+    background-color: #C51D34;
+    border-color: #DE1E84;
+}
+
+.btn-primary:hover {
+    background-color: #DE1E84;
+    border-color: #C51D34;
+}
+
+.btn-primary:focus {
+    background-color: #DE1E84;
+    border-color: #C51D34;
+}
+
+.page-link {
+    color: #C51D34;
+}
+
+.page-link:hover {
+    color: #DE1E84;
+}
