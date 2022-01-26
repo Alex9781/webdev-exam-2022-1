@@ -124,7 +124,7 @@ function filterBtnHandler(event) {
     let type = form.elements["type"].value;
     let discount = form.elements["discount"].value;
 
-    renderRestaurants(filterBase(AU, district, type, discount == "Да" ? true : falseD), 1);
+    renderRestaurants(filterBase(AU, district, type, discount == "Да" ? true : false), 1);
 }
 
 function filterBase(AU, district, type, discount) {
