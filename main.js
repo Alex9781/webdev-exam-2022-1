@@ -194,6 +194,8 @@ function selectBtnHandler(event) {
     for (let i = 0; i < 10; i++) {
         dishes[i].querySelector("h6").innerHTML = filteredBase[restaurantId]["set_" + (i + 1).toString()] + "&#8381;";
     }
+
+    calculateOrderPrice();
 }
 
 function changeDishCountHandler(event) {
